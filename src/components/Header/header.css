@@ -1,0 +1,12 @@
+.header-nav {
+	background-color: slateblue;
+	color: white;
+}
+
+.header-tile {
+	color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+	margin: 5px;
+	text-align: center;
+}

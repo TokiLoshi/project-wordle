@@ -1,0 +1,11 @@
+.footerbody {
+	text-align: center;
+	background-color: slateblue;
+	padding: 15px;
+	color: white;
+}
+
+.footer-link {
+	text-decoration: none;
+	color: white;
+}
