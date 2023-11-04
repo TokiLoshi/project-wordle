@@ -1,26 +1,30 @@
 import React from "react";
 
-function InputForm() {
+function InputForm({ handleSubmitGuess }) {
 	const [placeholder, setPlaceholder] = React.useState("");
-	function handleSubmit(placeholder) {
+
+	function handleSubmit(event) {
 		event.preventDefault();
-		console.log("We have a placeholder!", placeholder);
-	}
-	function updatePlaceholder() {
-		console.log("Time to update the placeholder");
-		setPlaceholder(event.target.value);
+		handleSubmitGuess(placeholder);
+		setPlaceholder("");
 	}
 	return (
 		<div>
-			<form
-				className='guess-input-wrapper'
-				onSubmit={() => handleSubmit(placeholder)}>
+			<form className='guess-input-wrapper' onSubmit={handleSubmit}>
 				<label htmlFor='guess-input'>Enter a guess:</label>
 				<input
 					type='text'
 					id='guess-input'
 					value={placeholder}
-					onChange={(event) => updatePlaceholder(event.target.value)}
+					maxLength={5}
+					minLength={5}
+					title='5 letter word'
+					pattern='[A-zA-Z]{5}'
+					required
+					onChange={(event) => {
+						const nextGuess = event.target.value;
+						setPlaceholder(nextGuess.toUpperCase());
+					}}
 				/>
 			</form>
 			<p>{placeholder}</p>
